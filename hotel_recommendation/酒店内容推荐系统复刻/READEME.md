@@ -1,0 +1,7 @@
+# 为酒店建立内容推荐系统
+* 数据库：西雅图酒店数据集
+    * 下载地址：https://github.com/susanli2016/Machine-Learning-with-Python/blob/master/Seattle_Hotels.csv
+    * 字段：name, address, desc
+
+* 任务：基于用户选择的酒店，推荐相似度高的Top10其他酒店
+* 方法：计算当前酒店特征向量与整个酒店特征矩阵的余弦相似度，取相似度最大的Top-k个
