@@ -1,0 +1,40 @@
+# ========== 向量知识库文件（核心，禁止上传，保护私有数据）
+*.faiss
+disney_metadata.json
+
+# ========== 本地素材存储文件夹（文档/图片/视频，企业私有资料不上仓库）
+disney_knowledge_base/
+disney_databases/
+
+# ========== Python 缓存、编译文件
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ========== 环境变量、密钥文件（防止 API Key 泄露）
+.env
+.env.local
+.env.prod
+
+# ========== 系统缓存、临时文件
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+logs/
+
+# ========== 编辑器配置
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ========== 其他
+*.cursorindexingignore
+.wucai/
+.ipynb_checkpoints
