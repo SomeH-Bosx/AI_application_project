@@ -10,6 +10,14 @@ Q：元数据管理能否将用metadata_store列表存储改为用Redis等数据
 
 ![image-20260724083738523](README.picture/image-20260724083738523.png)
 
+## 技术栈
+
+Ollama (本地大模型 + 嵌入) + LangChain (RAG 链路) + Chroma (本地向量库) + Gradio (网页 UI)
+
+## 整体架构
+
+1. 启动初始化 → 2. 上传 PDF 并构建向量知识库 → 3. 用户提问检索知识库回答 → 4. 重置 / 清空功能
+
 ## 功能亮点 
 
 1. 可视化网页界面，无需前端开发 
@@ -27,8 +35,6 @@ Q：元数据管理能否将用metadata_store列表存储改为用Redis等数据
     ollama pull qwen2.5:7b 
     ollama pull nomic-embed-text
    ```
-
-
 
 
 
