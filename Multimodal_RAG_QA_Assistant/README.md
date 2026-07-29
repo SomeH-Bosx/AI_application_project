@@ -52,26 +52,70 @@
 └── README.md
 
 ## 🚀 快速启动
-### 1. 安装依赖
+
+> 本流程为离线本地部署方案，所有数据保存在本机，适合企业内网、个人本地测试使用
+
+### 1. 环境前置准备
+1. 安装 Python 3.11+ 版本
+2. 获取阿里通义千问 API Key（阿里云百炼平台申请）
+3. 克隆项目到本地
+```bash
+git clone https://github.com/SomeH-Bosx/AI_application_project.git
+cd AI_application_project/Multimodal-RAG-Assistant
+```
+
+### 2. 一键安装全部依赖
+
+两种方式任选其一：
+
+#### 方式 1：通过 requirements.txt 批量安装（推荐）
+
+```bash
+pip install -r requirements.txt
+```
+
+#### 方式 2：手动逐条安装
+
 ```bash
 pip install gradio faiss-cpu dashscope openai python-docx python-pptx markdown PyPDF2 numpy
 ```
 
-### 2. 配置环境变量
+### 3. 配置通义千问 API 环境密钥
+
+#### Windows CMD/PowerShell
 
 ```bash
-# Windows
-set DASHSCOPE_API_KEY=你的key
-
-# Mac/Linux
-export DASHSCOPE_API_KEY=你的key
+# CMD
+set DASHSCOPE_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+# PowerShell
+$env:DASHSCOPE_API_KEY="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
-### 3. 运行项目
+#### MacOS / Linux 终端
+
+```bash
+export DASHSCOPE_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+> 替换 `sk-xxx` 为你自己的阿里云百炼 API 密钥
+
+### 4. 启动本地私有化服务
 
 ```bash
 python gradio_app.py
 ```
+
+### 5. 访问系统页面
+
+1. 本机访问：打开浏览器输入 `http://127.0.0.1:7860`
+2. 局域网其他设备访问：使用本机局域网 IP + 7860 端口，例 `http://192.168.1.105:7860`
+
+### 6. 私有化部署核心特性说明
+
+1. **数据持久化**：构建知识库后生成 `disney_index.faiss`、`disney_metadata.json`，重启程序、刷新网页不会丢失向量库；
+2. **本地存储隔离**：所有上传的文档、图片、视频全部保存在 `disney_knowledge_base` 本地文件夹，不会上传至任何第三方平台；
+3. **内网可用**：服务器启动参数 `server_name="0.0.0.0"`，支持公司内网多设备同时访问；
+4. **临时公网分享（可选）**：如需临时对外演示，修改代码 `app.launch(share=True)`，运行后生成 72 小时临时公网链接。
 
 ## 📎 使用流程
 

@@ -116,3 +116,73 @@ cd AI_application_project
 ### 💡 更新说明
 
 仓库持续迭代 RAG 进阶技术，后续将新增多模态检索、向量数据库对比、Agent 实战等 Demo，欢迎 Star 收藏持续跟进！
+
+
+
+
+
+## 克隆单个文件夹：稀疏检出（完整 Git 能力，可提交更新）
+
+适合你后续要修改代码、push 回仓库，保留 git 版本记录
+
+### 步骤
+
+1. 新建空文件夹，进入目录
+
+```bash
+mkdir Multimodal-RAG-Demo
+cd Multimodal-RAG-Demo
+```
+
+1. 初始化空 git 仓库
+
+```bash
+git init
+# 关联远程仓库地址
+git remote add origin https://github.com/你的用户名/Multimodal-RAG-Assistant.git
+```
+
+1. 开启稀疏检出模式
+
+```bash
+git config core.sparseCheckout true
+```
+
+1. 配置要下载的**单个文件夹路径**
+
+- 只拉取根目录全部文件（README、requirements、.gitignore）：
+
+```bash
+echo "/*" >> .git/info/sparse-checkout
+```
+
+- 排除素材文件夹（示例：只不要 disney_knowledge_base）
+
+```bash
+echo "!disney_knowledge_base/" >> .git/info/sparse-checkout
+```
+
+- 如果你只想拉取仓库里某一个子文件夹（比如 `demo/`）：
+
+```bash
+echo "demo/" >> .git/info/sparse-checkout
+```
+
+1. 拉取代码（浅克隆减少体积）
+
+```bash
+# 拉取main分支，只下载指定目录
+git pull origin main --depth=1
+```
+
+### 适配你的项目场景
+
+你的项目不需要克隆素材 / 向量库文件夹，稀疏配置直接写：
+
+```bash
+# 只下载根目录源码文件，屏蔽素材库
+echo "/*" >> .git/info/sparse-checkout
+echo "!disney_knowledge_base/" >> .git/info/sparse-checkout
+```
+
+执行后只会下载 `gradio_app.py`、README、requirements、.gitignore，不会下载知识库文件夹。
